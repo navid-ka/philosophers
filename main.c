@@ -6,7 +6,7 @@
 /*   By: bifrost <nkeyani-@student.42barcelona.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/08/18 00:19:00 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/08/18 00:26:38 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 int	main(void)
 {
-	for (int i = 0; i < 100; i++){
+	for (int i = 0; i < 1000; i++){
 		for (int j = 0; j < 1000; j++){
 			pthread_mutex_lock(&g_mutex);
 			g_count--;

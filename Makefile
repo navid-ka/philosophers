@@ -1,5 +1,5 @@
 NAME = philosophers
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -l pthread
 OBJECTS = main.c
 COLOR_RESET = \033[0m
 COLOR = \033[32m

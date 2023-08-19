@@ -6,7 +6,7 @@
 /*   By: bifrost <nkeyani-@student.42barcelona.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/08/18 21:26:55 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/08/18 21:28:34 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(void)
 {
 	struct timeval start;
     struct timeval end;
-	
 
     printf("loopFunc(%d) time spent: %0.8f sec\n", loops(200), time_diff(&start, &end));
 	printf("Hello, Philosophers %d\n", g_count);

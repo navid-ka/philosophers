@@ -6,7 +6,7 @@
 /*   By: bifrost <nkeyani-@student.42barcelona.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/08/18 21:28:34 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/08/19 02:54:40 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int	loops(int NUM)
 {
 	struct timeval start;
     struct timeval end;
+	gettimeofday(&start, NULL);
 	for (int i = 0; i < NUM; i++){
 		for (int j = 0; j < NUM; j++){
 			pthread_mutex_lock(&g_mutex);
-			gettimeofday(&start, NULL);
 			g_count--;
-			gettimeofday(&end, NULL);
 			pthread_mutex_unlock(&g_mutex);
 		}
 		pthread_mutex_lock(&g_mutex);
 		g_count++;
 		pthread_mutex_unlock(&g_mutex);
 	}
+	gettimeofday(&end, NULL);
 	return (g_count);
 }
 

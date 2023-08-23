@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrost <nkeyani-@student.42barcelona.c    +#+  +:+       +#+        */
+/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/08/22 17:06:26 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/08/23 22:32:24 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,28 @@ int	philo_eat(t_philo *philo, int NUM)
 	return (philo->eat = NUM);
 }
 
-int	loops(int NUM)
+int	loops_a(int NUM)
 {
 	struct timeval start;
     struct timeval end;
 	gettimeofday(&start, NULL);
 	for (int i = 0; i < NUM; i++){
-		for (int j = 0; j < NUM; j++){
-			pthread_mutex_lock(&g_mutex);
-			g_count--;
-			pthread_mutex_unlock(&g_mutex);
-		}
 		pthread_mutex_lock(&g_mutex);
 		g_count++;
+		pthread_mutex_unlock(&g_mutex);
+	}
+	gettimeofday(&end, NULL);
+	return (g_count);
+}
+
+int	loops_b(int NUM)
+{
+	struct timeval start;
+    struct timeval end;
+	gettimeofday(&start, NULL);
+	for (int i = 0; i < NUM; i++){
+		pthread_mutex_lock(&g_mutex);
+		g_count--;
 		pthread_mutex_unlock(&g_mutex);
 	}
 	gettimeofday(&end, NULL);
@@ -67,5 +76,5 @@ int	main(void)
 	//printf("%d\n", philo->eat);
 	gettimeofday(&end, NULL);
 	printf("loopFunc(%d) time spent: %0.8f sec\n", philo_eat(philo, NUM), time_diff(&start, &end));
-	printf("Hello, Philosophers %d\n", g_count);
+	printf("loop_a(%d) loop_a(%d) time spent: %0.8f sec\n", loops_a(NUM), loops_b(NUM), time_diff(&start, &end));
 }

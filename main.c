@@ -37,8 +37,8 @@ int	philo_eat(t_philo *philo, int NUM)
 
 int	loops_a(int NUM)
 {
-	struct timeval start;
-    struct timeval end;
+  struct timeval start;
+  struct timeval end;
 	gettimeofday(&start, NULL);
 	for (int i = 0; i < NUM; i++){
 		pthread_mutex_lock(&g_mutex);
@@ -72,8 +72,8 @@ int	main(void)
 	gettimeofday(&start, NULL);
 	philo->eat = 0;
 	printf("%d\n", philo->eat);
-	//philo_eat(philo, NUM);
-	//printf("%d\n", philo->eat);
+	philo_eat(philo, NUM);
+	printf("%d\n", philo->eat);
 	gettimeofday(&end, NULL);
 	printf("loopFunc(%d) time spent: %0.8f sec\n", philo_eat(philo, NUM), time_diff(&start, &end));
 	printf("loop_a(%d) loop_a(%d) time spent: %0.8f sec\n", loops_a(NUM), loops_b(NUM), time_diff(&start, &end));

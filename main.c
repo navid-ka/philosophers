@@ -21,7 +21,7 @@
 
 static int NUM  = 200;
 
-static int		g_count = 10;
+static int      g_count = 10;
 pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 
@@ -30,7 +30,7 @@ float	time_diff(struct timeval *start, struct timeval *end)
 	return (end->tv_sec - start->tv_sec) + 1e-6*(end->tv_usec - start->tv_usec);
 }
 
-int	philo_eat(t_philo *philo, int NUM)
+int philo_eat(t_philo *philo, int NUM)
 {
 	return (philo->eat = NUM);
 }
@@ -49,7 +49,7 @@ int	loops_a(int NUM)
 	return (g_count);
 }
 
-int	loops_b(int NUM)
+int loops_b(int NUM)
 {
 	struct timeval start;
     struct timeval end;
@@ -63,7 +63,7 @@ int	loops_b(int NUM)
 	return (g_count);
 }
 
-int	main(void)
+int main(void)
 {
 	struct timeval start;
     struct timeval end;

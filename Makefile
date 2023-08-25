@@ -1,13 +1,13 @@
 MAKEFLAGS += --no-print-directory
 NAME = philosophers
-endifNAME = philosophers
 CFLAGS = -Wall -Werror -Wextra -l pthread
 OBJECTS = main.c
+HEADER = inc/philosophers.h
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJECTS}
-	@cc ${CFLAGS} ${OBJECTS} -o ${NAME}
+$(NAME): $(OBJECTS) $(HEADER) Makefile
+	@cc $(CFLAGS) $(OBJECTS) -o $(NAME)
 	@ gum style \
 		--foreground 212 --border-foreground 213 --border normal \
 		--align center --width 70 --margin "0 2" --padding "2 4" \
@@ -40,7 +40,7 @@ git: fclean
 		gum style --foreground 212 --border-foreground 213 --align center --width 70 --margin "0 2" \
 		--padding "2 4" --border double 'Git push complete!' | lolcat; \
 	else \
-		printf "$(COLOR)Changes not committed.$(COLOR_RESET)"; \
+		printf "Changes not committed."; \
 	fi
 
 .PHONY: clean all fclean re main

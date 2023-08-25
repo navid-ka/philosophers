@@ -8,10 +8,10 @@ all: ${NAME}
 
 ${NAME}: ${OBJECTS}
 	@cc ${CFLAGS} ${OBJECTS} -o ${NAME}
-	@gum style \
+	@ gum style \
 		--foreground 212 --border-foreground 213 --border normal \
 		--align center --width 70 --margin "0 2" --padding "2 4" \
-		'Compilation completed, ./philosophers'
+		'Compilation completed, ./philosophers' | lolcat
 
 fclean: 
 	@gum spin --spinner meter --title "Cleaning..." -- make clean
@@ -19,14 +19,14 @@ fclean:
 	@gum style \
 		--foreground 212 --border-foreground 213 --border normal \
 		--align center --width 70 --margin "0 2" --padding "2 4" \
-		'Cleaned directory and object files!'
+		'Cleaned directory and object files!' | lolcat
 
 clean:
 	@rm -f ${NAME}
 	@gum style \
 		--foreground 212 --border-foreground 213 --border normal \
 		--align center --width 70 --margin "0 2" --padding "2 4" \
-		'Cleaned object files!'
+		'Cleaned object files!' | lolcat
 
 re: fclean all
 
@@ -38,7 +38,7 @@ git: fclean
 		git commit -m "$$TYPE $$DESCRIPTION"; \
 		gum spin --spinner meter --title "Pushing to repository" -- git push; \
 		gum style --foreground 212 --border-foreground 213 --align center --width 70 --margin "0 2" \
-		--padding "2 4" --border double 'Git push complete!'; \
+		--padding "2 4" --border double 'Git push complete!' | lolcat; \
 	else \
 		printf "$(COLOR)Changes not committed.$(COLOR_RESET)"; \
 	fi

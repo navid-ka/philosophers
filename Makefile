@@ -27,7 +27,7 @@ git: fclean
 	@TYPE=$(shell gum choose "fix:" "feat:" "docs:" "refactor:" "test:" "chore:" "revert:"); \
 	@DESCRIPTION=$(shell gum write --placeholder "Details of this change (CTRL+D to finish)"); \
 	if gum confirm "Commit changes?"; then \
-		git commit -m "$$TYPE""$$DESCRIPTION"; \
+		git commit -m "$$TYPE$$DESCRIPTION"; \
 		git push; \
 	else \
 		echo "Changes not committed."; \

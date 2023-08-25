@@ -28,7 +28,7 @@ git: fclean
 	@git add .
 	@TYPE=$(shell gum choose "fix:" "feat:" "docs:" "refactor:" "test:" "chore:" "revert:"); \
 	DESCRIPTION=$(shell gum input --placeholder "Details of this change"); \
-	if gum confirm "Commit changes?"; then \
+	if gum confirm "Another commit!"; then \
 		git commit -m "$$TYPE $$DESCRIPTION"; \
 		git push; \
 	else \

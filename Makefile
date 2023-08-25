@@ -24,11 +24,9 @@ re: fclean all
 
 git: fclean
 	git add .
-	export TYPE=$(shell gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert")
-	export DESCRIPTION=$(shell gum write --placeholder "Details of this change (CTRL+D to finish)")
-	echo "TYPE: $TYPE"
-	echo "DESCRIPTION: $DESCRIPTION"
-	/bin/bash -c "gum confirm 'Commit changes?' && git commit -m '$TYPE' -m '$DESCRIPTION' && git push"
+	TYPE=$(shell gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert") \
+	DESCRIPTION=$(shell gum write --placeholder "Details of this change (CTRL+D to finish)") \
+	TARGET =$(gum confirm 'Commit changes?' && git commit -m '$$TYPE' -m '$$DESCRIPTION' && git push);
 
 
 .PHONY: clean all fclean re main

@@ -30,7 +30,7 @@ git: fclean
 	DESCRIPTION=$(shell gum input --placeholder "Details of this change"); \
 	if gum confirm "Another commit!"; then \
 		git commit -m "$$TYPE $$DESCRIPTION"; \
-		gum spin --show-output --spinner meter --title "Buying Bubble Gum..." -- sleep 5 -- git push; \
+		gum spin --spinner meter --title "Buying Bubble Gum..." -- git push; \
 	else \
 		printf "$(COLOR)Changes not committed.$(COLOR_RESET)"; \
 	fi

@@ -26,7 +26,7 @@ git: fclean
 	git add .
 	export TYPE=$(shell gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert")
 	export DESCRIPTION=$(shell gum write --placeholder "Details of this change (CTRL+D to finish)")
-	/bin/bash "$$(gum confirm "Commit changes?" && git commit -m ''$$TYPE' -m ''$$DESCRIPTION')";
-	git push
+	/bin/bash "$$(gum confirm "Commit changes?" && git commit -m '$$TYPE' -m '$$DESCRIPTION' && git push)";
+	
 
 .PHONY: clean all fclean re main

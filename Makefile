@@ -1,4 +1,4 @@
-MAKEFLAGS += --no-print-directory
+#MAKEFLAGS += --no-print-directory
 NAME = philosophers
 endifNAME = philosophers
 CFLAGS = -Wall -Werror -Wextra -l pthread

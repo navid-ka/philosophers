@@ -37,6 +37,7 @@ git: fclean
 	if gum confirm "Another commit!"; then \
 		git commit -m "$$TYPE $$DESCRIPTION"; \
 		gum spin --spinner meter --title "Pushing to repository" -- git push; \
+		gum style --foreground 212 --border-foreground 213 --align center --width 70 --margin "0 2" --padding "2 4" 'Git push complete!'; \
 	else \
 		printf "$(COLOR)Changes not committed.$(COLOR_RESET)"; \
 	fi

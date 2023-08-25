@@ -29,7 +29,7 @@ git: fclean
 	@TYPE=$(shell gum choose "fix:" "feat:" "docs:" "refactor:" "test:" "chore:" "revert:"); \
 	DESCRIPTION=$(shell gum input --placeholder "Details of this change"); \
 	if gum confirm "Another commit!"; then \
-		git commit -m "$$TYPE '$$DESCRIPTION'"; \
+		git commit -m "$$TYPE $$DESCRIPTION"; \
 		git push; \
 	else \
 		printf "$(COLOR)Changes not committed.$(COLOR_RESET)"; \

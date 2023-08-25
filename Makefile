@@ -32,7 +32,7 @@ git: fclean
 		git commit -m "$$TYPE $$DESCRIPTION"; \
 		git push; \
 	else \
-		echo "Changes not committed."; \
+		printf "$(COLOR)Changes not committed.$(COLOR_RESET)"; \
 	fi
 
 .PHONY: clean all fclean re main

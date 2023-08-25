@@ -19,7 +19,7 @@
 #include <time.h>
 #include "inc/philosophers.h"
 
-static int NUM  = 200;
+static int NUM  = 2000;
 
 static int      g_count = 10;
 pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;

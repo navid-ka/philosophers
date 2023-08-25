@@ -24,9 +24,14 @@ re: fclean all
 
 git: fclean
 	git add .
-	TYPE=$(shell gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert") \
-	DESCRIPTION=$(shell gum write --placeholder "Details of this change (CTRL+D to finish)") \
-	TARGET =$(gum confirm 'Commit changes?' && git commit -m '$$TYPE' -m '$$DESCRIPTION' && git push);
+	TYPE=$(shell gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert"); \
+	DESCRIPTION=$(shell gum write --placeholder "Details of this change (CTRL+D to finish)"); \
+	if gum confirm "Commit changes?"; then \
+		git commit -m "$$TYPE" -m "$$DESCRIPTION"; \
+		git push; \
+	else \
+		echo "Changes not committed."; \
+	fi
 
 
 .PHONY: clean all fclean re main

@@ -3,31 +3,37 @@ NAME = philosophers
 endifNAME = philosophers
 CFLAGS = -Wall -Werror -Wextra -l pthread
 OBJECTS = main.c
-COLOR_RESET = \033[0m
-COLOR = \033[32m
-KAOMOJI_SUCCESS = (づ ᴗ _ᴗ)づ♡
-KAOMOJI_REMOVE = (ノಠ益ಠ)ノ彡┻━┻
 
 all: ${NAME}
 
 ${NAME}: ${OBJECTS}
 	@cc ${CFLAGS} ${OBJECTS} -o ${NAME}
-	@printf "$(COLOR)Main program compiled successfully!$(COLOR_RESET)\n"
+	@gum style \
+		--foreground 212 --border-foreground 213 --border normal \
+		--align center --width 70 --margin "0 2" --padding "2 4" \
+		'Compilation completed, ./philosophers'
 
-fclean: clean
+fclean: 
+	@gum spin --spinner meter --title "Cleaning..." -- make clean
 	@rm -rf ${NAME}
-	@printf "$(COLOR)Cleaned directory! $(KAOMOJI_REMOVE)$(COLOR_RESET)\n"
+	@gum style \
+		--foreground 212 --border-foreground 213 --border normal \
+		--align center --width 70 --margin "0 2" --padding "2 4" \
+		'Cleaned directory and object files!'
 
 clean:
 	@rm -f ${NAME}
-	@printf "$(COLOR)Cleaned object files! $(KAOMOJI_REMOVE)$(COLOR_RESET)\n"
+	@gum style \
+		--foreground 212 --border-foreground 213 --border normal \
+		--align center --width 70 --margin "0 2" --padding "2 4" \
+		'Cleaned object files!'
 
 re: fclean all
 
 git: fclean
 	@git add .
 	@TYPE=$(shell gum choose "fix:" "feat:" "refactor:" "test:" "chore:" "revert:"); \
-	DESCRIPTION=$(shell gum input --placeholder "Details of this change"); \
+	DESCRIPTION=$(shell gum input --placeholder "Details of this change (Add '')"); \
 	if gum confirm "Another commit!"; then \
 		git commit -m "$$TYPE $$DESCRIPTION"; \
 		gum spin --spinner meter --title "Pushing to repository" -- git push; \

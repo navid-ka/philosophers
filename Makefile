@@ -1,4 +1,6 @@
+MAKEFLAGS += --no-print-directory
 NAME = philosophers
+endifNAME = philosophers
 CFLAGS = -Wall -Werror -Wextra -l pthread
 OBJECTS = main.c
 COLOR_RESET = \033[0m
@@ -24,7 +26,7 @@ re: fclean all
 
 git: fclean
 	@git add .
-	TYPE=$(shell gum choose "fix:" "feat:" "docs:" "refactor:" "test:" "chore:" "revert:"); \
+	@TYPE=$(shell gum choose "fix:" "feat:" "docs:" "refactor:" "test:" "chore:" "revert:"); \
 	DESCRIPTION=$(shell gum write --placeholder "Details of this change (CTRL+D to finish)"); \
 	if gum confirm "Commit changes?"; then \
 		git commit -m "$$TYPE $$DESCRIPTION"; \
@@ -32,6 +34,5 @@ git: fclean
 	else \
 		echo "Changes not committed."; \
 	fi
-
 
 .PHONY: clean all fclean re main

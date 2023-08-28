@@ -36,9 +36,9 @@ bool ph_args(char **argv)
 int main(int argc, char **argv)
 {
   if (argc < 5 || argc > 6)
-    return (printf("Invalid number of arguments"), 2);
+    return (printf("Invalid number of arguments\n"));
   if (!ph_args(argv))
-    return (printf("Arguments where not optimal"), 3);
+    return (printf("Arguments where not optimal\n"));
 
   return (42);
 }

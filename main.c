@@ -10,71 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <pthread.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <time.h>
 #include "inc/philosophers.h"
 
-static int NUM  = 2000;
-
-static int      g_count = 10;
-pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
-
-
-float	time_diff(struct timeval *start, struct timeval *end)
+int ph_atoi(char *s)
 {
-	return (end->tv_sec - start->tv_sec) + 1e-6*(end->tv_usec - start->tv_usec);
+  int res;
+
+  res = 0;
+  while (*s >= '0' && *s <= '9')
+    res = (res * 10) + (*s++ - 48);
+  return (res);
 }
 
-int philo_eat(t_philo *philo, int NUM)
+bool ph_args(char **argv)
 {
-	return (philo->eat = NUM);
+  int ix;
+
+  ix = 1;
+  while (argv[ix])
+    if (!ph_atoi(argv[ix++]))
+      return (false);
+  return (true);
 }
 
-int	loops_a(int NUM)
+int main(int argc, char **argv)
 {
-  struct timeval start;
-  struct timeval end;
-	gettimeofday(&start, NULL);
-	for (int i = 0; i < NUM; i++){
-		pthread_mutex_lock(&g_mutex);
-		g_count++;
-		pthread_mutex_unlock(&g_mutex);
-	}
-	gettimeofday(&end, NULL);
-	return (g_count);
+  if (argc < 5 || argc > 6)
+    return (printf("Invalid number of arguments"), 2);
+  if (!ph_args(argv))
+    return (printf("Arguments where not optimal"), 3);
+
+  return (42);
 }
 
-int loops_b(int NUM)
-{
-	struct timeval start;
-    struct timeval end;
-	gettimeofday(&start, NULL);
-	for (int i = 0; i < NUM; i++){
-		pthread_mutex_lock(&g_mutex);
-		g_count--;
-		pthread_mutex_unlock(&g_mutex);
-	}
-	gettimeofday(&end, NULL);
-	return (g_count);
-}
-
-int main(void)
-{
-	struct timeval start;
-    struct timeval end;
-	
-	t_philo *philo = malloc(sizeof ((*philo)) + 1);
-	gettimeofday(&start, NULL);
-	philo->eat = 0;
-	printf("%d\n", philo->eat);
-	philo_eat(philo, NUM);
-	printf("%d\n", philo->eat);
-	gettimeofday(&end, NULL);
-	printf("loopFunc(%d) time spent: %0.8f sec\n", philo_eat(philo, NUM), time_diff(&start, &end));
-	printf("loop_a(%d) loop_a(%d) time spent: %0.8f sec\n", loops_a(NUM), loops_b(NUM), time_diff(&start, &end));
-}

@@ -12,6 +12,14 @@
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
+# include <stdio.h>
+# include <pthread.h>
+# include <stdlib.h>
+# include <pthread.h>
+# include <unistd.h>
+# include <sys/time.h>
+# include <stdbool.h>
+# include <time.h>
 
 typedef struct s_philo
 {
@@ -19,5 +27,11 @@ typedef struct s_philo
 	int	sleep;
 	int	think;
 }	t_philo;
+
+typedef struct s_data
+{
+  t_philo *philos;
+  int ph_num;
+} t_data;
 
 #endif

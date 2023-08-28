@@ -28,10 +28,10 @@ typedef struct s_philo
 	int	think;
 }	t_philo;
 
-typedef struct s_data
+typedef struct s_table
 {
   t_philo *philos;
   int ph_num;
-} t_data;
+} t_table;
 
 #endif

@@ -32,6 +32,8 @@ typedef struct s_table
 {
   t_philo *philos;
   int ph_num;
+  pthread *left_fork;
+  pthread *rightfork;
 } t_table;
 
 #endif

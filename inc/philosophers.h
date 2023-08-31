@@ -32,8 +32,13 @@ typedef struct s_table
 {
   t_philo *philos;
   int ph_num;
-  pthread *left_fork;
-  pthread *rightfork;
+  pthread_t *left_fork;
+  pthread_t *rightfork;
 } t_table;
+
+// ph_parse.c
+
+int ph_atoi(char *s);
+bool ph_args(char **argv);
 
 #endif

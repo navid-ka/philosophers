@@ -33,6 +33,9 @@ typedef struct s_table
 {
   t_philo *philos;
   int     ph_num;
+  int     time_to_die;
+  int     time_to_eat;
+  int     time_to_sleep;
 } t_table;
 
 // ph_parse.c

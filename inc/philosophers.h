@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrost <nkeyani-@student.42barcelona.c    +#+  +:+       +#+        */
+/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/08/20 15:07:59 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/08/31 20:52:46 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,11 @@ typedef struct s_table
 
 int   ph_atoi(char *s);
 bool  ph_args(char **argv);
+
+// ph_table_init.c
+
+int   ph_init_table(t_table *data, char **argv);
+void  ph_init_forks(t_table *data);
+void  ph_init_philos(t_table *data);
 
 #endif

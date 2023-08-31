@@ -23,22 +23,21 @@
 
 typedef struct s_philo
 {
-	int	eat;
-	int	sleep;
-	int	think;
-}	t_philo;
+  struct          s_table *table;
+  int             ph_id;
+  pthread_mutex_t *left_fork;
+  pthread_mutex_t *rightfork;
+} t_philo;
 
 typedef struct s_table
 {
   t_philo *philos;
-  int ph_num;
-  pthread_t *left_fork;
-  pthread_t *rightfork;
+  int     ph_num;
 } t_table;
 
 // ph_parse.c
 
-int ph_atoi(char *s);
-bool ph_args(char **argv);
+int   ph_atoi(char *s);
+bool  ph_args(char **argv);
 
 #endif

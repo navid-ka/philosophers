@@ -20,7 +20,7 @@ int ph_init_table(t_table *data, char **argv)
   data->time_to_sleep = ph_atoi(argv[4]);
   return(0);
 }
-
+/*
 void  ph_init_forks(t_table *data)
 {
   // TODO: Init forks logic  
@@ -30,4 +30,4 @@ void  ph_init_philos(t_table *data)
 {
   //TODO: Init philosophers logic
 }
-
+*/

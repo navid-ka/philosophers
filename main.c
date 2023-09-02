@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "inc/philosophers.h"
+#include <string.h>
 
 int main(int argc, char **argv)
 {
   t_table *data;
 
-  data = malloc(sizeof(data));
+  memset(&data, 0, sizeof (data));
   if (argc < 5 || argc > 6)
     return (printf("Invalid number of arguments\n"));
   if (!ph_args(argv))
@@ -25,6 +26,6 @@ int main(int argc, char **argv)
   printf("ph_num : %d\ntime_to_die : %d\ntime_to_eat : %d\ntime_to_sleep : %d\n", \
          data->ph_num, data->time_to_die, data->time_to_eat, data->time_to_sleep);
 
-  return (42);
+  exit(EXIT_SUCCESS);
 }
 

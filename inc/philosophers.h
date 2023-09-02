@@ -21,6 +21,7 @@
 # include <stdbool.h>
 # include <time.h>
 # include <string.h>
+# include <stdint.h>
 
 typedef struct s_philo
 {
@@ -32,17 +33,17 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-  t_philo *philos;
-  int     ph_num;
-  int     time_to_die;
-  int     time_to_eat;
-  int     time_to_sleep;
+  t_philo   *philos;
+  uint32_t  ph_num;
+  uint32_t  time_to_die;
+  uint32_t  time_to_eat;
+  uint32_t  time_to_sleep;
 } t_table;
 
 // ph_parse.c
 
-int   ph_atoi(char *s);
-bool  ph_args(int argc, char **argv);
+uint32_t  ph_atoi(char *s);
+bool      ph_args(int argc, char **argv);
 
 // ph_table_init.c
 

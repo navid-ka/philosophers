@@ -12,9 +12,9 @@
 
 #include "inc/philosophers.h"
 
-int ph_atoi(char *s)
+uint32_t ph_atoi(char *s)
 {
-  int res;
+  uint32_t res;
 
   res = 0;
   while (*s >= '0' && *s <= '9')

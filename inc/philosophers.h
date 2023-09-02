@@ -20,6 +20,7 @@
 # include <sys/time.h>
 # include <stdbool.h>
 # include <time.h>
+# include <string.h>
 
 typedef struct s_philo
 {
@@ -41,7 +42,7 @@ typedef struct s_table
 // ph_parse.c
 
 int   ph_atoi(char *s);
-bool  ph_args(char **argv);
+bool  ph_args(int argc, char **argv);
 
 // ph_table_init.c
 

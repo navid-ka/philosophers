@@ -12,6 +12,13 @@
 
 #include "inc/philosophers.h"
 
+/*
+int ph_malloc_table(t_table *data)
+{
+  data = malloc()
+}
+*/
+
 int ph_init_table(t_table *data, char **argv)
 {
   data->ph_num = ph_atoi(argv[1]);

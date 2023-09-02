@@ -22,10 +22,15 @@ int ph_atoi(char *s)
   return (res);
 }
 
-bool ph_args(char **argv)
+bool ph_args(int argc, char **argv)
 {
   int ix;
 
+  if (argc < 5 || argc > 6)
+  {
+    printf("Error\n");
+    return (false);
+  }
   ix = 1;
   while (argv[ix])
     if (!ph_atoi(argv[ix++]))

@@ -11,21 +11,17 @@
 /* ************************************************************************** */
 
 #include "inc/philosophers.h"
-#include <string.h>
 
 int main(int argc, char **argv)
 {
-  t_table *data;
-
+  t_table data;
+  
   memset(&data, 0, sizeof (data));
-  if (argc < 5 || argc > 6)
-    return (printf("Invalid number of arguments\n"));
-  if (!ph_args(argv))
+  if (!ph_args(argc, argv))
     return (printf("Arguments where not optimal\n"));
-  ph_init_table(data, argv);
+  ph_init_table(&data, argv);
   printf("ph_num : %d\ntime_to_die : %d\ntime_to_eat : %d\ntime_to_sleep : %d\n", \
-         data->ph_num, data->time_to_die, data->time_to_eat, data->time_to_sleep);
-
+         data.ph_num, data.time_to_die, data.time_to_eat, data.time_to_sleep);
   exit(EXIT_SUCCESS);
 }
 

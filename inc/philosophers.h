@@ -25,15 +25,15 @@
 
 typedef struct s_philo
 {
-  struct          s_table *table;
-  int             ph_id;
-  pthread_mutex_t *left_fork;
-  pthread_mutex_t *rightfork;
+  struct s_table  *table;
+  int             id;
+  pthread_mutex_t l_fork;
+  pthread_mutex_t *r_fork;
 } t_philo;
 
 typedef struct s_table
 {
-  t_philo   *philos;
+  t_philo   *philo;
   uint64_t  ph_num;
   uint64_t  time_to_die;
   uint64_t  time_to_eat;
@@ -47,7 +47,7 @@ bool      ph_args(int argc, char **argv);
 
 // ph_table_init.c
 
-int   ph_init_table(t_table *data, char **argv);
+void  ph_init_table(t_table *data, char **argv);
 void  ph_init_forks(t_table *data);
 void  ph_init_philos(t_table *data);
 

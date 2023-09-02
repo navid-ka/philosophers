@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ph_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/08/31 20:51:43 by bifrost          ###   ########.fr       */
+/*   Created: 2023/09/02 23:47:26 by bifrost           #+#    #+#             */
+/*   Updated: 2023/09/02 23:47:27 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/philosophers.h"
 
-int main(int argc, char **argv)
+void  ph_usleep(int64_t time)
 {
-  t_table data;
-  
-  memset(&data, 0, sizeof (data));
-  if (!ph_args(argc, argv))
-    return (printf("Arguments where not optimal\n"));
-  ph_init_table(&data, argv);
-  ph_init_philos(&data);
-  printf("ph_num : %ld\ntime_to_die : %ld\ntime_to_eat : %ld\ntime_to_sleep : %ld\n", \
-         data.ph_num, data.time_to_die, data.time_to_eat, data.time_to_sleep);
-  exit(EXIT_SUCCESS);
+  time += ph_time();
+	while (ph_time() <= time)
+		usleep(200);
+}
 }
 
+void  ph_time(void)
+{
+  struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}

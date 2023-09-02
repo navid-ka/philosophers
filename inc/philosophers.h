@@ -34,15 +34,15 @@ typedef struct s_philo
 typedef struct s_table
 {
   t_philo   *philos;
-  uint32_t  ph_num;
-  uint32_t  time_to_die;
-  uint32_t  time_to_eat;
-  uint32_t  time_to_sleep;
+  uint64_t  ph_num;
+  uint64_t  time_to_die;
+  uint64_t  time_to_eat;
+  uint64_t  time_to_sleep;
 } t_table;
 
 // ph_parse.c
 
-uint32_t  ph_atoi(char *s);
+uint64_t  ph_atoi(char *s);
 bool      ph_args(int argc, char **argv);
 
 // ph_table_init.c

@@ -51,4 +51,9 @@ void  ph_init_table(t_table *data, char **argv);
 void  ph_init_forks(t_table *data);
 void  ph_init_philos(t_table *data);
 
+// ph_time.c
+
+int64_t  ph_time(void);
+void      ph_usleep(int64_t time);
+
 #endif

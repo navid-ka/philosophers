@@ -1,28 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ph_time.c                                          :+:      :+:    :+:   */
+/*   ph_states.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/02 23:47:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/09/03 00:11:21 by bifrost          ###   ########.fr       */
+/*   Created: 2023/09/03 00:09:12 by bifrost           #+#    #+#             */
+/*   Updated: 2023/09/03 00:09:13 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/philosophers.h"
-
-void  ph_usleep(int64_t time)
-{
-  time += ph_time();
-  while (ph_time() <= time)
-	usleep(200);
-}
-
-int64_t  ph_time(void)
-{
-  struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
-}

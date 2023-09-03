@@ -21,6 +21,7 @@ void  ph_malloc_table(t_table *data)
 
 void ph_init_table(t_table *data, char **argv)
 {
+  memset(data, 0, sizeof(*data));
   data->ph_num = ph_atoi(argv[1]);
   data->time_to_die = ph_atoi(argv[2]);
   data->time_to_eat = ph_atoi(argv[3]);

@@ -23,6 +23,7 @@ int main(int argc, char **argv)
   ph_init_philos(&data);
   printf("ph_num : %ld\ntime_to_die : %ld\ntime_to_eat : %ld\ntime_to_sleep : %ld\n", \
          data.ph_num, data.time_to_die, data.time_to_eat, data.time_to_sleep);
+
   free(data.philo);
   exit(EXIT_SUCCESS);
 }

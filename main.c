@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkeyani- < nkeyani-@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/08/31 20:51:43 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/09/04 15:28:01 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     return (printf("Arguments where not optimal\n"));
   ph_init_table(&data, argv);
   ph_init_philos(&data);
-  printf("ph_num : %ld\ntime_to_die : %ld\ntime_to_eat : %ld\ntime_to_sleep : %ld\n", \
+  printf("ph_num : %lld\ntime_to_die : %lld\ntime_to_eat : %lld\ntime_to_sleep : %lld\n", \
          data.ph_num, data.time_to_die, data.time_to_eat, data.time_to_sleep);
   free(data.philo);
   exit(EXIT_SUCCESS);

@@ -34,7 +34,7 @@ void  ph_init_philos(t_table *data)
   //TODO: Init philosophers logic
   uint64_t i;
 
-  i = -1;
+  i = ~0;
   while (++i < data->ph_num)
   {
     data->philo[i].id = i + 1;

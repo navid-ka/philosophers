@@ -6,7 +6,7 @@
 /*   By: nkeyani- < nkeyani-@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/09/04 15:28:01 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:29:28 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ int main(int argc, char **argv)
   free(data.philo);
   exit(EXIT_SUCCESS);
 }
-

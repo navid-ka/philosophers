@@ -38,6 +38,7 @@ typedef struct s_table
   uint64_t  time_to_die;
   uint64_t  time_to_eat;
   uint64_t  time_to_sleep;
+  uint64_t  time_to_start;
 } t_table;
 
 // ph_parse.c
@@ -54,6 +55,6 @@ void  ph_init_philos(t_table *data);
 // ph_time.c
 
 int64_t  ph_time(void);
-void      ph_usleep(int64_t time);
+void     ph_usleep(int64_t time);
 
 #endif

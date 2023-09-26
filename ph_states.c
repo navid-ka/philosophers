@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ph_states.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkeyani- < nkeyani-@student.42barcelona    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 00:09:12 by bifrost           #+#    #+#             */
-/*   Updated: 2023/09/03 00:09:13 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/09/26 10:58:36 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/philosophers.h"
 
-void  ph_states(t_table *data)
+void	ph_states(t_table *data)
 {
-  
+	
 }

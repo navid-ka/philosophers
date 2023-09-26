@@ -12,7 +12,7 @@
 
 #include "inc/philosophers.h"
 
-uint64_	ph_atoi(char *s)
+uint64_t  ph_atoi(char *s)
 {
 	uint64_t	res;
 

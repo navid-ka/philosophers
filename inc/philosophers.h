@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/18 17:21:34 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:36:08 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_table
 	uint64_t		time_to_sleep;
 	uint64_t		time_to_start;
 	uint64_t		meals;
+	uint64_t		start;
 	pthread_mutex_t	dead_mutex;
 	bool		is_dead;
 }	t_table;
@@ -64,7 +65,7 @@ void		ph_create_philos(t_table *data, t_philo *philo);
 
 // ph_time.c
 
-int64_t		ph_time(void);
-void		ph_usleep(int64_t time);
+uint64_t		ph_time(void);
+void		ph_usleep(uint64_t time);
 
 #endif

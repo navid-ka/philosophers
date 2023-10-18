@@ -1,6 +1,6 @@
 MAKEFLAGS += --no-print-directory
 NAME = philosophers
-CFLAGS = -Wall -Werror -Wextra -g -l pthread -fsanitize=address #-fsanitize=thread
+CFLAGS = -Wall -Werror -Wextra -g -l pthread #-fsanitize=address #-fsanitize=thread
 OBJECTS = main.c ph_parse.c ph_table_init.c ph_time.c
 HEADER = inc/philosophers.h
 

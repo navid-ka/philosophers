@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkeyani- < nkeyani-@student.42barcelona    +#+  +:+       +#+        */
+/*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/09/26 11:12:32 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:53:00 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <time.h>
 # include <string.h>
 # include <stdint.h>
+
+//#define malloc(x) NULL
 
 typedef struct s_philo
 {
@@ -39,6 +41,7 @@ typedef struct s_table
 	uint64_t	time_to_eat;
 	uint64_t	time_to_sleep;
 	uint64_t	time_to_start;
+	uint64_t	meals;
 }	t_table;
 
 // ph_parse.c
@@ -48,8 +51,8 @@ bool		ph_args(int argc, char **argv);
 
 // ph_table_init.c
 
-void		ph_init_table(t_table *data, char **argv);
-void		ph_init_forks(t_table *data);
+int			ph_init_table(t_table *data, char **argv);
+int			ph_init_forks(t_table *data);
 void		ph_init_philos(t_table *data);
 
 // ph_time.c

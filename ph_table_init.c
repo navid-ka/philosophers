@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ph_table_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkeyani- < nkeyani-@student.42barcelona    +#+  +:+       +#+        */
+/*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:51:28 by bifrost           #+#    #+#             */
-/*   Updated: 2023/09/26 11:00:55 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:56:52 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/philosophers.h"
 
-void	ph_malloc_table(t_table *data)
+int	ph_malloc_table(t_table *data)
 {
 	data->philo = malloc(sizeof(t_philo) * data->ph_num);
 	if (!data->philo)
-		return ((void)write(1, "Malloc error.\n", 15));
+		return (write(1, "Malloc error.\n", 15), 0);
+	return (1);
 }
 
-void	ph_init_table(t_table *data, char **argv)
+int	ph_init_table(t_table *data, char **argv)
 {
 	memset(data, 0, sizeof(*data));
 	data->ph_num = ph_atoi(argv[1]);
 	data->time_to_die = ph_atoi(argv[2]);
 	data->time_to_eat = ph_atoi(argv[3]);
 	data->time_to_sleep = ph_atoi(argv[4]);
-	ph_malloc_table(data);
+	if (!ph_malloc_table(data))
+		return (0);
+	return (1);
 }
 
 //TODO: Init philosophers logic

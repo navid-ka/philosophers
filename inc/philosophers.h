@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/18 15:53:00 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:21:34 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,24 @@ typedef struct s_philo
 {
 	struct s_table	*table;
 	int				id;
+	uint64_t		last_meal;
+	pthread_t		t;
+	pthread_mutex_t	ok;
 	pthread_mutex_t	l_fork;
 	pthread_mutex_t	*r_fork;
 }	t_philo;
 
 typedef struct s_table
 {
-	t_philo		*philo;
-	uint64_t	ph_num;
-	uint64_t	time_to_die;
-	uint64_t	time_to_eat;
-	uint64_t	time_to_sleep;
-	uint64_t	time_to_start;
-	uint64_t	meals;
+	t_philo			*philo;
+	uint64_t		ph_num;
+	uint64_t		time_to_die;
+	uint64_t		time_to_eat;
+	uint64_t		time_to_sleep;
+	uint64_t		time_to_start;
+	uint64_t		meals;
+	pthread_mutex_t	dead_mutex;
+	bool		is_dead;
 }	t_table;
 
 // ph_parse.c
@@ -54,6 +59,8 @@ bool		ph_args(int argc, char **argv);
 int			ph_init_table(t_table *data, char **argv);
 int			ph_init_forks(t_table *data);
 void		ph_init_philos(t_table *data);
+void		ph_create_loop(t_table *data, t_philo *philo);
+void		ph_create_philos(t_table *data, t_philo *philo);
 
 // ph_time.c
 

@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/18 19:36:08 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:19:13 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ bool		ph_args(int argc, char **argv);
 int			ph_init_table(t_table *data, char **argv);
 int			ph_init_forks(t_table *data);
 void		ph_init_philos(t_table *data);
-void		ph_create_loop(t_table *data, t_philo *philo);
-void		ph_create_philos(t_table *data, t_philo *philo);
+
+// ph_trheads.c
+
+void	ph_create_philos(t_table *data, t_philo *philo);
 
 // ph_time.c
 

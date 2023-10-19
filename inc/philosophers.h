@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/19 19:05:48 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:57:27 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ typedef struct s_philo
 {
 	struct s_table	*table;
 	int				id;
+	int				time_die;
 	uint64_t		last_meal;
 	pthread_t		t;
+	pthread_mutex_t	time_die_mutex;
 	pthread_mutex_t	l_fork;
 	pthread_mutex_t	*r_fork;
 }	t_philo;

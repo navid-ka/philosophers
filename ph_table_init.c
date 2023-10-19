@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:51:28 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/19 16:58:32 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/19 23:23:43 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,15 @@ void	ph_init_philos(t_table *data)
 	while (i < data->ph_num)
 	{
 		data->philo[i].id = i + 1;
-		data->philo[i].r_fork = NULL;
 		data->philo[i].last_meal = 0;
+		if (i == 0)
+			data->philo[i].r_fork
+				= &data->philo[data->ph_num - 1].l_fork;
+		else
+			data->philo[i].r_fork = &data->philo[i - 1].l_fork;
+		pthread_mutex_init(data->philo[i].r_fork, NULL);
 		pthread_mutex_init(&data->philo[i].l_fork, NULL);
+		pthread_mutex_init(&data->philo[i].time_die_mutex, NULL);
 		data->philo[i].table = data;
 		i++;
 	}
@@ -43,6 +49,12 @@ void	ph_create_philos(t_table *data)
 
 	i = 0;
 	data->start = ph_time();
+	data->philo->t = malloc(data->ph_num * sizeof(pthread_t));
+	if (!data->philo->t)
+	{
+		free(data->philo);
+		return ;
+	}
 	while (i < data->ph_num)
 	{
 		pthread_create(&data->philo[i].t, NULL, \
@@ -61,6 +73,7 @@ int	ph_init_table(t_table *data, char **argv)
 	data->start = 0;
 	pthread_mutex_init(&data->dead_mutex, NULL);
 	pthread_mutex_init(&data->print_mutex, NULL);
+	pthread_mutex_init(&data->start_mutex, NULL);
 	if (!ph_malloc_table(data))
 		return (0);
 	ph_init_philos(data);

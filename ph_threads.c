@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 00:11:52 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/19 12:20:54 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:24:23 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	ph_create_philos(t_table *data, t_philo *philo)
 	data->start = ph_time();
 	while (i < data->ph_num)
 	{
-		pthread_create(&data->philo[i].t, NULL, (void *)routine, &data->philo[i]);
+		pthread_create(&data->philo[i].t, NULL, \
+			(void *)routine, &data->philo[i]);
 		i++;
 		usleep(10);
 	}

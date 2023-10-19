@@ -11,7 +11,7 @@ $(NAME): $(OBJECTS) $(HEADER) Makefile
 	@ gum style \
 		--foreground 212 --border-foreground 213 --border normal \
 		--align center --width 70 --margin "0 2" --padding "2 4" \
-		'Compilation completed, ./philosophers' | lolcat
+		'Compilation completed, ./philosophers 10 300 200 300' | lolcat
 
 fclean: 
 	@gum spin --spinner meter --title "Cleaning..." -- make clean

@@ -1,7 +1,7 @@
 MAKEFLAGS += --no-print-directory
 NAME = philosophers
-CFLAGS = -Wall -Werror -Wextra -g -l pthread #-fsanitize=address #-fsanitize=thread
-OBJECTS = main.c ph_parse.c ph_table_init.c ph_time.c ph_threads.c
+CFLAGS = -Wall -Werror -Wextra -l pthread # -g -fsanitize=address #-fsanitize=thread
+OBJECTS = main.c ph_parse.c ph_table_init.c ph_time.c ph_threads.c ph_print.c
 HEADER = inc/philosophers.h
 
 all: $(NAME)

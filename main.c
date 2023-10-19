@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/18 17:20:12 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:38:51 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_table	data;
-	t_philo philo;
+	t_philo	philo;
 
 	memset(&data, 0, sizeof(data));
 	memset(&philo, 0, sizeof(philo));
@@ -23,10 +23,9 @@ int	main(int argc, char **argv)
 		return (printf("Arguments where not optimal\n"));
 	if (!ph_init_table(&data, argv))
 		return (EXIT_FAILURE);
-	ph_init_philos(&data);
-	printf("ph_num : %lld\ntime_to_die : %lld\ntime_to_eat : %lld\ntime_to_sleep : %lld\n", \
-		data.ph_num, data.time_to_die, data.time_to_eat, data.time_to_sleep);
-	ph_create_philos(&data, &philo);
+	ph_usleep(100);
+	pthread_mutex_unlock(&data.start_mutex);
+	control(&data, &philo);
 	free(data.philo);
-	return(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

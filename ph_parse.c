@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ph_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkeyani- < nkeyani-@student.42barcelona    +#+  +:+       +#+        */
+/*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 16:39:33 by bifrost           #+#    #+#             */
-/*   Updated: 2023/09/26 10:58:14 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:34:24 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/philosophers.h"
 
-uint64_t  ph_atoi(char *s)
+uint64_t	ph_atoi(char *s)
 {
 	uint64_t	res;
 

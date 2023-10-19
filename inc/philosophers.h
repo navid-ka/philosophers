@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/19 20:57:27 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/20 01:18:25 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		ph_create_philos(t_table *data);
 // ph_trheads.c
 
 void	routine(t_philo *philo);
-void	control(t_table *data, t_philo *philo);
+void	control(t_table *data);
 
 // ph_time.c
 

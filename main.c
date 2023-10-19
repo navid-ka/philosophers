@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/19 22:50:29 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/20 01:29:57 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	main(int argc, char **argv)
 		return (printf("Arguments where not optimal\n"));
 	if (!ph_init_table(&data, argv))
 		return (EXIT_FAILURE);
-	ph_usleep(100);
+	ph_usleep(30);
 	pthread_mutex_unlock(&data.start_mutex);
-	//control(&data, &philo);
+	control(&data);
 	free(data.philo);
 	return (EXIT_SUCCESS);
 }

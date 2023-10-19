@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/19 16:41:04 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:05:48 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ uint64_t	ph_time(void);
 void		ph_usleep(uint64_t time);
 
 // ph_print.c
-void    ph_print(char *color, t_philo *philo, char *s, bool dead);
+void    	ph_print(char *color, t_philo *philo, char *s, bool dead);
 
 #endif

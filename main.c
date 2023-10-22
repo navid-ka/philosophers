@@ -6,7 +6,7 @@
 /*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:19 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/20 02:25:19 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/10/20 14:25:53 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	main(int argc, char **argv)
 		return (printf("Arguments where not optimal\n"));
 	if (!ph_init_table(&data, argv))
 		return (EXIT_FAILURE);
-	ph_usleep(100);
-	pthread_mutex_unlock(&data.start_mutex);
+	//ph_usleep(100);
+	//pthread_mutex_unlock(&data.start_mutex);
 	control(&data);
-	free(data.philo);
+	//free(data.philo);
 	return (EXIT_SUCCESS);
 }

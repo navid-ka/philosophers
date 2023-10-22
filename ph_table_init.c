@@ -6,7 +6,7 @@
 /*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:51:28 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/20 01:31:29 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/10/20 14:25:25 by bifrost          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ void	ph_init_philos(t_table *data)
 	uint64_t	i;
 
 	i = 0;
-	pthread_mutex_unlock(&data->start_mutex);
+	//pthread_mutex_lock(&data->start_mutex);
 	while (i < data->ph_num)
 	{
 		data->philo[i].id = i + 1;
-		data->philo[i].last_meal = 0;
 		data->philo[i].time_die = data->time_to_die;
 		if (i == 0)
 			data->philo[i].r_fork

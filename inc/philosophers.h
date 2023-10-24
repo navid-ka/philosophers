@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 23:50:26 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/20 01:18:25 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/10/24 16:31:56 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_philo
 	struct s_table	*table;
 	int				id;
 	int				time_die;
+	uint64_t		times_eaten;
 	uint64_t		last_meal;
 	pthread_t		t;
 	pthread_mutex_t	time_die_mutex;
@@ -64,6 +65,7 @@ typedef struct s_table
 	uint64_t		time_to_eat;
 	uint64_t		time_to_sleep;
 	uint64_t		meals;
+	uint64_t		meals_finished;
 	uint64_t		start;
 	bool			is_dead;
 	pthread_mutex_t	print_mutex;
@@ -79,14 +81,13 @@ bool		ph_args(int argc, char **argv);
 // ph_table_init.c
 
 int			ph_init_table(t_table *data, char **argv);
-int			ph_init_forks(t_table *data);
 void		ph_init_philos(t_table *data);
 void		ph_create_philos(t_table *data);
 
 // ph_trheads.c
 
-void	routine(t_philo *philo);
-void	control(t_table *data);
+void		routine(t_philo *philo);
+void		control(t_table *data);
 
 // ph_time.c
 
@@ -94,6 +95,6 @@ uint64_t	ph_time(void);
 void		ph_usleep(uint64_t time);
 
 // ph_print.c
-void    	ph_print(char *color, t_philo *philo, char *s, bool dead);
+void		ph_print(char *color, t_philo *philo, char *s, bool dead);
 
 #endif

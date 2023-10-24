@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ph_table_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bifrost <bifrost@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:51:28 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/20 14:25:25 by bifrost          ###   ########.fr       */
+/*   Updated: 2023/10/24 16:35:39 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,35 @@ int	ph_malloc_table(t_table *data)
 	return (1);
 }
 
-//TODO: Init philosophers logic
 void	ph_init_philos(t_table *data)
 {
 	uint64_t	i;
 
 	i = 0;
-	//pthread_mutex_lock(&data->start_mutex);
+	pthread_mutex_lock(&data->start_mutex);
 	while (i < data->ph_num)
 	{
 		data->philo[i].id = i + 1;
 		data->philo[i].time_die = data->time_to_die;
+		data->philo[i].times_eaten = 0;
 		if (i == 0)
 			data->philo[i].r_fork
 				= &data->philo[data->ph_num - 1].l_fork;
 		else
 			data->philo[i].r_fork = &data->philo[i - 1].l_fork;
-		pthread_mutex_init(data->philo[i].r_fork, NULL);
 		pthread_mutex_init(&data->philo[i].l_fork, NULL);
 		pthread_mutex_init(&data->philo[i].time_die_mutex, NULL);
 		data->philo[i].table = data;
 		i++;
 	}
 }
+
 void	ph_create_philos(t_table *data)
 {
 	uint64_t	i;
 
 	i = 0;
 	data->start = ph_time();
-	//data->philo->t = malloc(data->ph_num * sizeof(pthread_t));
-	/*if (!data->philo->t)
-	{
-		free(data->philo);
-		return ;
-	}*/
 	while (i < data->ph_num)
 	{
 		pthread_create(&data->philo[i].t, NULL, \
@@ -70,6 +64,9 @@ int	ph_init_table(t_table *data, char **argv)
 	data->time_to_die = ph_atoi(argv[2]);
 	data->time_to_eat = ph_atoi(argv[3]);
 	data->time_to_sleep = ph_atoi(argv[4]);
+	data->meals = -1;
+	if (argv[5])
+		data->meals = ph_atoi(argv[5]);
 	data->start = 0;
 	pthread_mutex_init(&data->dead_mutex, NULL);
 	pthread_mutex_init(&data->print_mutex, NULL);
@@ -80,4 +77,3 @@ int	ph_init_table(t_table *data, char **argv)
 	ph_create_philos(data);
 	return (1);
 }
-

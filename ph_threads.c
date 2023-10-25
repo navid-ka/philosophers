@@ -6,7 +6,7 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 00:11:52 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/24 16:34:36 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:02:23 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ph_eating(t_philo *philo)
 	pthread_mutex_lock(&philo->time_die_mutex);
 	philo->time_die = philo->table->time_to_die + \
 		(ph_time() - philo->table->start);
-	pthread_mutex_unlock(&philo->time_die_mutex);
 	philo->times_eaten++;
+	pthread_mutex_unlock(&philo->time_die_mutex);
 	ph_print(B, philo, EAT, false);
 	ph_usleep(philo->table->time_to_eat);
 	pthread_mutex_unlock(&philo->l_fork);
@@ -79,14 +79,16 @@ void	control(t_table *data)
 	uint64_t	time;
 
 	i = 0;
-	while (data->is_dead != true)
+	while (!data->is_dead)
 	{
 		pthread_mutex_lock(&data->philo[i].time_die_mutex);
 		time = data->philo[i].time_die;
 		pthread_mutex_unlock(&data->philo[i].time_die_mutex);
 		isded(data, i, time);
+		pthread_mutex_lock(&data->philo[i].time_die_mutex);
 		if (data->philo[i].times_eaten == data->meals)
 			data->meals_finished++;
+		pthread_mutex_unlock(&data->philo[i].time_die_mutex);
 		if (data->ph_num == data->meals_finished)
 			break ;
 		i++;

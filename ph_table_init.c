@@ -6,13 +6,13 @@
 /*   By: nkeyani- <nkeyani-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:51:28 by bifrost           #+#    #+#             */
-/*   Updated: 2023/10/24 16:35:39 by nkeyani-         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:06:41 by nkeyani-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/philosophers.h"
 
-int	ph_malloc_table(t_table *data)
+int	ph_malloc(t_table *data)
 {
 	data->philo = malloc(sizeof(t_philo) * data->ph_num);
 	if (!data->philo)
@@ -71,7 +71,7 @@ int	ph_init_table(t_table *data, char **argv)
 	pthread_mutex_init(&data->dead_mutex, NULL);
 	pthread_mutex_init(&data->print_mutex, NULL);
 	pthread_mutex_init(&data->start_mutex, NULL);
-	if (!ph_malloc_table(data))
+	if (!ph_malloc(data))
 		return (0);
 	ph_init_philos(data);
 	ph_create_philos(data);

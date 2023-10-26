@@ -1,5 +1,5 @@
 MAKEFLAGS += --no-print-directory
-NAME = philosophers
+NAME = philo
 CFLAGS = -Wall -Werror -Wextra -l pthread #-fsanitize=thread # -g -fsanitize=address 
 OBJECTS = main.c ph_parse.c ph_table_init.c ph_time.c ph_threads.c ph_print.c
 HEADER = inc/philosophers.h
@@ -11,7 +11,7 @@ $(NAME): $(OBJECTS) $(HEADER) Makefile
 	@ gum style \
 		--foreground 212 --border-foreground 213 --border normal \
 		--align center --width 70 --margin "0 2" --padding "2 4" \
-		'Compilation completed, ./philosophers 10 300 200 300' | lolcat
+		'Compilation completed, ./philo 10 410 200 200' | lolcat
 
 fclean: 
 	@gum spin --spinner meter --title "Cleaning..." -- make clean
